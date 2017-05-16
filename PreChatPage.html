@@ -75,9 +75,9 @@ Drug: <input type='' name='liveagent.prechat:CaseSubject' id='subject' /><br />-
 <!-- This example assumes that "Chat" was added as picklist value to the Case Origin field -->
 <input type="hidden" name="liveagent.prechat:CaseOrigin" value="Chat" /><br />
 
-<!-- This example will set the Case Record Type to a specific value for the record type configured on the org. Lookup the case record type's id on your org and set it here 
-<input type="hidden" name="liveagent.prechat:CaseRecordType" value="012D00123456789" />
--->
+<!-- This example will set the Case Record Type to a specific value for the record type configured on the org. Lookup the case record type's id on your org and set it here -->
+<input type="hidden" name="liveagent.prechat:CaseRecordType" value="012Q000000059KZ" />
+
 <!-- Used to set the visitor's name for the agent in the Console -->
 <input type="hidden" name="liveagent.prechat.name" id="prechat_field_name" />
 
@@ -87,7 +87,7 @@ Drug: <input type='' name='liveagent.prechat:CaseSubject' id='subject' /><br />-
 
 <!--<input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Subject,CaseSubject;Status,CaseStatus;Origin,CaseOrigin;RecordTypeId,CaseRecordType" />-->
 
-<input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Status,CaseStatus;Origin,CaseOrigin" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Status,CaseStatus;Origin,CaseOrigin;RecordTypeId,CaseRecordType" />
 
 <!-- doFind, doCreate and isExactMatch example for a Contact: 
 Find a contact whose Email exactly matches the value provided by the customer in the form 
@@ -112,7 +112,7 @@ If there's no match, then create a Contact record and set it's First Name, Last 
 <input type="hidden" name="liveagent.prechat.findorcreate.saveToTranscript:Case" value="CaseId" />
 
 <!-- displayToAgent: Hides the case record type from the agent -->
-<!--<input type="hidden" name="liveagent.prechat.findorcreate.displayToAgent:CaseRecordType" value="false" />-->
+<input type="hidden" name="liveagent.prechat.findorcreate.displayToAgent:CaseRecordType" value="false" />
 
 <!-- searchKnowledge: Searches knowledge article based on the text, this assumes that Knowledge is setup -->
 <input type="hidden" name="liveagent.prechat.knowledgeSearch:CaseSubject" value="true" />
