@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This script takes the endpoint URL parameter passed from the 
+deployment page and makes it the action for the form.
+You can see the endPoint parameter in the Pre-Chat form window's URL.
+-->
+
+<!-- This script takes the endpoint URL parameter passed from the deployment page and makes it the action for the form -->
+<script type='text/javascript'>
+(function() {
+function handlePageLoad() {
+var endpointMatcher = new RegExp("[\\?\\&]endpoint=([^&#]*)");
+document.getElementById('prechatForm').setAttribute('action',
+decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
+} if (window.addEventListener) {
+window.addEventListener('load', handlePageLoad, false);
+} else { window.attachEvent('onload', handlePageLoad, false);
+}})();
+</script>
+</head>
+
+<body>
+<h1>Call Back Request Page</h1>
+
+<!-- Form that gathers information from the chat visitor and sets the values to Live Agent Custom Details used later in the example -->
+<form method='post' id='prechatForm'>
+<!--First name: <input type='text' name='liveagent.prechat:AccountFirstName' id='firstName' /><br />
+Last name: <input type='text' name='liveagent.prechat:AccountLastName' id='lastName' /><br />-->
+
+<a href="./" target="_blank">Call Back Request</a>
+<ul>
+    <li>Name:><input type='text' name='liveagent.prechat:CaseSuppliedName' id='suppliedName' required="true"/></li>
+    <li>Phone:<input type='text' name='liveagent.prechat:CaseSuppliedPhone' id='suppliedPhone' required="true"/></li>
+    <li>Company:<input type='text' name='liveagent.prechat:CaseSuppliedCompany' id='suppliedCompany' required="true"/></li>    
+</ul>
+
+<input type="hidden" name="liveagent.prechat:CaseStatus" value="New" /><br />
+<input type="hidden" name="liveagent.prechat:CaseOrigin" value="Chat" /><br />
+<input type="hidden" name="liveagent.prechat.findorcreate.map:Case" value="Status,CaseStatus;Origin,CaseOrigin;SuppliedName,CaseSuppliedName;SuppliedPhone,CaseSuppliedPhone;SuppliedCompany,CaseSuppliedCompany" />
+<input type="hidden" name="liveagent.prechat.findorcreate.map.doCreate:Case" value="Status,true;Origin,true;SuppliedName,true;SuppliedPhone,true;SuppliedCompany,true" />
+<input type="hidden" name="liveagent.prechat.findorcreate.showOnCreate:Case" value="true" />
+<input type='submit' value='Submit' id='prechat_submit' "/>
+
+<style type="text/css">
+p {font-weight: bolder }
+</style>
+
+</form>
+</body>
+</html>
