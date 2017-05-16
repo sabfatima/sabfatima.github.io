@@ -6,6 +6,8 @@ You can see the endPoint parameter in the Pre-Chat form window's URL.
 -->
 
 <!-- This script takes the endpoint URL parameter passed from the deployment page and makes it the action for the form -->
+<script type='text/javascript' src='https://c.la1c1.salesforceliveagent.com/content/g/js/32.0/prechat.js'></script>
+
 <script type='text/javascript'>
 (function() {
 function handlePageLoad() {
@@ -42,6 +44,16 @@ else {
 }
 }
 
+var detailCallback = function (details){
+    for (var i = 0; i < details.customDetails.length; i++) {
+        if(details.customDetails[i].label == 'DrugName'){
+            console.log(details.customDetails[i].value);
+            document.getElementById("Chatbuttons").value = details.customDetails[i].value;
+           
+        }
+    }
+	
+	liveagent.details.preChatInit('https://d.la1c1.salesforceliveagent.com/chat','detailCallback');
 </script>
 </head>
 
