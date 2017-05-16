@@ -16,10 +16,37 @@ decodeURIComponent(endpointMatcher.exec(document.location.search)[1]));
 window.addEventListener('load', handlePageLoad, false);
 } else { window.attachEvent('onload', handlePageLoad, false);
 }})();
+
+function getURLParameter(name) {
+  return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
+
+function setLAChatButtonSkills(){
+var drugName = getURLParameter('drugNamefromURL');
+var OncologyList = ["Arimidex","Casodex","Faslodex","Lynparza","Iressa","Tagrisso","Zoladex","Imfinzi","Tremzi","Imfinzi + Tremzi"];
+var RespiratoryList = ["Daliresp","Tudorza","Pulmicort","Symbicort"];
+var SynagisList = ["Synagis","Flumist"];
+
+if (OncologyList.indexOf(drugName) > -1) {
+    document.getElementById("Chatbuttons").value = "573Q0000000CbTB";
+	//In the array!
+} 
+else if (RespiratoryList.indexOf(drugName) > -1) {
+    document.getElementById("Chatbuttons").value = "573Q0000000CbTG";
+}
+else if (SynagisList.indexOf(drugName) > -1) {
+    document.getElementById("Chatbuttons").value = "573Q0000000CbTL";
+}
+else {
+    document.getElementById("Chatbuttons").value = "573Q0000000CbTQ";
+}
+}
+
 </script>
 </head>
 
-<body>
+<body onLoad="setLAChatButtonSkills();"> 
+
 <h1>Live Agent Pre-Chat Form</h1>
 
 <!-- Form that gathers information from the chat visitor and sets the values to Live Agent Custom Details used later in the example -->
@@ -89,6 +116,8 @@ If there's no match, then create a Contact record and set it's First Name, Last 
 
 <!-- searchKnowledge: Searches knowledge article based on the text, this assumes that Knowledge is setup -->
 <input type="hidden" name="liveagent.prechat.knowledgeSearch:CaseSubject" value="true" />
+
+<input type="hidden" name="liveagent.prechat.buttons" id = "Chatbuttons" value="true" />
 
 <!--<input type='submit' value='Chat Now' id='prechat_submit' onclick="setName()"/>-->
 
